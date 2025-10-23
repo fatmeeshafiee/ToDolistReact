@@ -4,11 +4,11 @@ import { useState } from "react";
 export default function Todo(){
     let [todos,setTodos]=useState([
         {name:"Eating lunch",status:false},
-        {name:"Reading Book",status:false},
+        {name:"Reading Book",status:true},
         {name:"Studing",status:false},
     ])
     return(
-    <div>
+    <>
         <div className="bg-zinc-800">
             <div className="flex items-center justify-center h-screen">
             <div className="w-full px-4 py-8 mx-auto shadow lg:w-2/4  bg-zinc-500">
@@ -26,7 +26,7 @@ export default function Todo(){
             </div>
             </div>
         </div>
-    </div>
+    </>
         
     );
 }
