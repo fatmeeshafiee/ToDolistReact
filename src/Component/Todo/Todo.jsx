@@ -22,7 +22,7 @@ export default function Todo(){
                     className="w-full px-2 py-3 border rounded outline-none border-grey-600 bg-gray-600" />
                 </div>
             {/*list of todo  */}
-              <Todolist todos={todos}></Todolist>
+              <Todolist todoslist={todos}></Todolist>
             </div>
             </div>
         </div>
