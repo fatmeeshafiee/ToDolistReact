@@ -15,6 +15,16 @@ export default function Todo(){
                 event.target.value=""
             }
         }}
+    function statusTodo(itemId){
+        let updatedTodo=todos.map((value)=>{
+            if(value.id==itemId){
+                value.status=!value.status
+                return value
+            }
+            return value
+        })
+        setTodos(updatedTodo)
+    }
     return(
     <>
         <div className="bg-zinc-800">
@@ -30,7 +40,7 @@ export default function Todo(){
                     className="w-full px-2 py-3 border rounded outline-none border-grey-600 bg-gray-600" onKeyDown={addTodo}  />
                 </div>
             {/*list of todo  */}
-              <Todolist todoslist={todos}></Todolist>
+              <Todolist todoslist={todos} status={statusTodo}></Todolist>
             </div>
             </div>
         </div>
