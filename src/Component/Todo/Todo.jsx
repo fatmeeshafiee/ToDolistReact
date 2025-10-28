@@ -14,7 +14,7 @@ export default function Todo(){
                 setTodos([...todos,Newtodo])
                 event.target.value=""
             }
-        }}
+    }}
     function statusTodo(itemId){
         let updatedTodo=todos.map((value)=>{
             if(value.id==itemId){
@@ -24,6 +24,12 @@ export default function Todo(){
             return value
         })
         setTodos(updatedTodo)
+    }
+    function deleteTodo(deletItemId){
+        let updatedTodo2=todos.filter((value)=>{
+            return value.id!=deletItemId
+        })
+        setTodos(updatedTodo2)
     }
     return(
     <>
@@ -40,7 +46,7 @@ export default function Todo(){
                     className="w-full px-2 py-3 border rounded outline-none border-grey-600 bg-gray-600" onKeyDown={addTodo}  />
                 </div>
             {/*list of todo  */}
-              <Todolist todoslist={todos} status={statusTodo}></Todolist>
+              <Todolist todoslist={todos} status={statusTodo} deleteTodo={deleteTodo}></Todolist>
             </div>
             </div>
         </div>
