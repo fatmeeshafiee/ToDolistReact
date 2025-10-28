@@ -1,12 +1,20 @@
 import Todolist from "../Todolist/Todolist";
 import { useState } from "react";
-
+import { v4 as uuidv4 } from 'uuid';
 export default function Todo(){
     let [todos,setTodos]=useState([
-        {name:"Eating lunch",status:false},
-        {name:"Reading Book",status:true},
-        {name:"Studing",status:false},
+        {id:uuidv4(),name:"Eating lunch",status:false},
+        {id:uuidv4(),name:"Reading Book",status:true},
+        {id:uuidv4(),name:"Studing",status:false},
     ])
+    function addTodo(event){
+        if(event.code=="Enter"){
+            if(event.target.value){
+                let Newtodo={id:uuidv4(),name:event.target.value,status:false}
+                setTodos([...todos,Newtodo])
+                event.target.value=""
+            }
+        }}
     return(
     <>
         <div className="bg-zinc-800">
@@ -19,14 +27,13 @@ export default function Todo(){
             {/* input */}
                 <div className="relative">
                     <input type="text" id='input' placeholder="What needs to be done today?"
-                    className="w-full px-2 py-3 border rounded outline-none border-grey-600 bg-gray-600" />
+                    className="w-full px-2 py-3 border rounded outline-none border-grey-600 bg-gray-600" onKeyDown={addTodo}  />
                 </div>
             {/*list of todo  */}
               <Todolist todoslist={todos}></Todolist>
             </div>
             </div>
         </div>
-    </>
-        
+    </>   
     );
 }
