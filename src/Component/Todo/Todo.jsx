@@ -31,10 +31,20 @@ export default function Todo(){
         })
         setTodos(updatedTodo2)
     }
+    function changeHandler(todoId,newTitle){
+        let updatedTodo3=todos.map((value)=>{
+            if(value.id==todoId){
+                value.name=newTitle
+                return value
+            }
+            return value
+        })
+        setTodos(updatedTodo3)
+    }
     return(
     <>
-        <div className="bg-zinc-800">
-            <div className="flex items-center justify-center h-screen">
+        <div>
+            <div className="flex items-center justify-center">
             <div className="w-full px-4 py-8 mx-auto shadow lg:w-2/4  bg-zinc-500">
             {/* header */}
                 <div className="flex items-center mb-6">
@@ -46,7 +56,7 @@ export default function Todo(){
                     className="w-full px-2 py-3 border rounded outline-none border-grey-600 bg-gray-600" onKeyDown={addTodo}  />
                 </div>
             {/*list of todo  */}
-              <Todolist todoslist={todos} status={statusTodo} deleteTodo={deleteTodo}></Todolist>
+              <Todolist todoslist={todos} status={statusTodo} deleteTodo={deleteTodo} changeHandler={changeHandler}></Todolist>
             </div>
             </div>
         </div>
